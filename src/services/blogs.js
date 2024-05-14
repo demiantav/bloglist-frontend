@@ -9,7 +9,14 @@ const getToken = (tokenId) => {
 
 const getAll = () => {
   const request = axios.get(baseUrl);
-  return request.then((response) => response.data);
+
+  const data = request.then((response) => {
+    console.log(response.data);
+
+    return response.data;
+  });
+
+  return data;
 };
 
 export default { getAll, getToken };
