@@ -19,4 +19,19 @@ const getAll = () => {
   return data;
 };
 
-export default { getAll, getToken };
+const postABlog = async (blogToPost) => {
+  const header = {
+    headers: { Authorization: token },
+  };
+  try {
+    const blogPosted = await axios.post(baseUrl, blogToPost, header);
+
+    console.log(blogPosted.data);
+
+    return blogPosted.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default { getAll, getToken, postABlog };

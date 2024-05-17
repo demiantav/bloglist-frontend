@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header-style {
+  background-color: blue;
+  width: 100%;
+  padding: 0.6rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.logout {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+p {
+  position: relative;
+  padding-inline-end: 15px;
+  color: white;
+}
+
+.logout p::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: rgb(12, 230, 12);
+}
+
+.logout button:hover {
+  cursor: pointer;
+}

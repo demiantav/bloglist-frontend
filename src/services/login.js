@@ -9,6 +9,7 @@ const login = async (credentials) => {
     return userLogged.data;
   } catch (error) {
     console.log(error);
+    throw new Error(error.response ? error.response.data.error : 'Login failed');
   }
 };
 
