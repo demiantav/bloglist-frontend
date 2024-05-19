@@ -5,6 +5,7 @@ import loginService from './services/login';
 import HeaderUser from './components/HeaderUser';
 import LoginForm from './components/LoginForm';
 import FormBlog from './components/FormBlog';
+import './components/style.css';
 
 const App = () => {
   const [blogs, setBlogs] = useState([]);
@@ -26,11 +27,12 @@ const App = () => {
       window.localStorage.setItem('userTokenLocal', JSON.stringify(user));
       blogService.getToken(user.token);
       setUser(user);
+      setMessage(null);
       setUserName('');
       setPassword('');
     } catch (error) {
       console.log(error);
-      setMessage(error.message);
+      setMessage('wrong username or password');
     }
   };
 

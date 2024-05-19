@@ -16,7 +16,13 @@ const Notification = ({ message, setMessage }) => {
     return null;
   }
 
-  return <p style={{ color: 'black' }}>{message}</p>;
+  const isError = message.includes('wrong');
+
+  return (
+    <p className="notification" style={{ backgroundColor: isError ? 'red' : 'green' }}>
+      {message}
+    </p>
+  );
 };
 
 export default Notification;

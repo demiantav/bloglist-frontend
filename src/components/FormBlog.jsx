@@ -24,7 +24,7 @@ const FormBlog = ({ blogs, setBlogs, message, setMessage }) => {
       setUrl('');
 
       setBlogs(blogs.concat(blogPosted));
-      setMessage('La nota fue subida perfectamente');
+      setMessage(`a new blog You're NOT gonna need it! by ${author} added`);
     } catch (error) {
       console.log(error);
       setMessage(error);
@@ -70,9 +70,9 @@ const FormBlog = ({ blogs, setBlogs, message, setMessage }) => {
         </div>
 
         <button type="submit">Save</button>
-
-        <Notification message={message} setMessage={setMessage} />
       </form>
+
+      <Notification message={message} setMessage={setMessage} />
 
       {blogs.map((blog) => (
         <Blog key={blog.id} blog={blog} />

@@ -43,3 +43,9 @@ p {
 .logout button:hover {
   cursor: pointer;
 }
+
+.notification {
+  padding: 0.5rem;
+  margin-block: 1rem;
+  display: inline-block;
+}
