@@ -37,7 +37,10 @@ const App = () => {
   };
 
   useEffect(() => {
-    blogService.getAll().then((blogs) => setBlogs(blogs));
+    blogService.getAll().then((blogs) => {
+      blogs.sort((a, b) => a.likes - b.likes);
+      setBlogs(blogs);
+    });
   }, []);
 
   useEffect(() => {
@@ -52,20 +55,27 @@ const App = () => {
   return (
     <>
       <HeaderUser user={user} setUser={setUser} />
-
-      {user === null ? (
-        <LoginForm
-          handleLogin={handleLogin}
-          setUserName={setUserName}
-          setPassword={setPassword}
-          setMessage={setMessage}
-          userName={userName}
-          password={password}
-          message={message}
-        />
-      ) : (
-        <FormBlog blogs={blogs} setBlogs={setBlogs} message={message} setMessage={setMessage} />
-      )}
+      <section>
+        {user === null ? (
+          <LoginForm
+            handleLogin={handleLogin}
+            setUserName={setUserName}
+            setPassword={setPassword}
+            setMessage={setMessage}
+            userName={userName}
+            password={password}
+            message={message}
+          />
+        ) : (
+          <FormBlog
+            blogs={blogs}
+            setBlogs={setBlogs}
+            message={message}
+            setMessage={setMessage}
+            user={user}
+          />
+        )}
+      </section>
     </>
   );
 };

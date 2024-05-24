@@ -34,4 +34,20 @@ const postABlog = async (blogToPost) => {
   }
 };
 
-export default { getAll, getToken, postABlog };
+const updateLikes = async (objectLikes, id) => {
+  const response = await axios.put(`${baseUrl}/${id}`, objectLikes);
+};
+
+const deleteBlog = async (id) => {
+  const header = {
+    headers: { Authorization: token },
+  };
+
+  try {
+    await axios.delete(`${baseUrl}/${id}`, header);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default { getAll, getToken, postABlog, updateLikes, deleteBlog };

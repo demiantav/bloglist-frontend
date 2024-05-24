@@ -39,7 +39,7 @@ const LoginForm = ({
 
         <button type="submit">Login</button>
       </form>
-      <Notification message={message} setMessage={setMessage} />;
+      <Notification message={message} setMessage={setMessage} />
     </>
   );
 };
