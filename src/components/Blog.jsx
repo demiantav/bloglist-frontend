@@ -15,7 +15,6 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
     event.preventDefault();
 
     const newLike = likes + 1;
-    cd;
 
     await blogService.updateLikes(
       {
@@ -54,7 +53,7 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
           <p style={{ color: 'black' }}>{blog.author}</p>
           <a href="">{blog.url}</a>
           <p style={{ color: 'black' }}>
-            {likes} <button onClick={setLike}>p</button>
+            {likes} <button onClick={setLike}>Like</button>
           </p>
           {user.user === blog.userId.userName && (
             <button onClick={() => deleteBlog(blog.id)}>Delete</button>
