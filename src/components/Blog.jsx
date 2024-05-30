@@ -49,7 +49,7 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
         {blog.title}
         <button onClick={handleVisible}>{showBlog ? 'Hide' : 'Show'}</button>
 
-        <div style={isVisible}>
+        <div style={isVisible} className="blogContent">
           <p style={{ color: 'black' }}>{blog.author}</p>
           <a href="">{blog.url}</a>
           <p style={{ color: 'black' }}>
