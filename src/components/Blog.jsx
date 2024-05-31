@@ -7,6 +7,8 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
 
   const isVisible = { display: showBlog ? '' : 'none' };
 
+  let updatedBlog;
+
   const handleVisible = () => {
     setShowBlog(!showBlog);
   };
@@ -16,16 +18,18 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
 
     const newLike = likes + 1;
 
-    await blogService.updateLikes(
-      {
-        likes: newLike,
-      },
-      blog.id
-    );
+    try {
+      updatedBlog = await blogService.updateLikes(
+        {
+          likes: newLike,
+        },
+        blog.id
+      );
 
-    setLikes(newLike);
-
-    console.log(likes);
+      setLikes(updatedBlog.likes);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const deleteBlog = async (id) => {
@@ -51,9 +55,12 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
 
         <div style={isVisible} className="blogContent">
           <p style={{ color: 'black' }}>{blog.author}</p>
-          <a href="">{blog.url}</a>
+          <a href={blog.url}>{blog.url}</a>
           <p style={{ color: 'black' }}>
-            {likes} <button onClick={setLike}>Like</button>
+            {likes}
+            <button className="button-like" onClick={setLike}>
+              Like
+            </button>
           </p>
           {user.user === blog.userId.userName && (
             <button onClick={() => deleteBlog(blog.id)}>Delete</button>

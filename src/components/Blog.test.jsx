@@ -2,11 +2,17 @@ import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Blog from './Blog';
 import { beforeEach } from 'vitest';
+import blogService from '../services/blogs.js';
+import { vi } from 'vitest';
 
 let blog;
 let container;
+let user;
+
+vi.mock('../services/blogs.js');
 
 beforeEach(() => {
+  user = userEvent.setup();
   blog = {
     title: 'Piru',
     author: 'Ricardo',
@@ -18,11 +24,15 @@ beforeEach(() => {
     },
   };
 
-  const user = {
+  const userName = {
     user: 'Diego',
   };
 
-  container = render(<Blog blog={blog} user={user} />).container;
+  container = render(<Blog blog={blog} user={userName} />).container;
+
+  blogService.updateLikes.mockImplementation(async (updatedLikes, id) => {
+    return { ...blog, likes: updatedLikes.likes };
+  });
 });
 
 test('blog renders title and author', () => {
@@ -31,8 +41,6 @@ test('blog renders title and author', () => {
 });
 
 test('a blog shows likes and url when the button is clicked', async () => {
-  const user = userEvent.setup();
-
   const button = screen.getByText('Show');
 
   const divBlog = container.querySelector('.blogContent');
@@ -40,4 +48,19 @@ test('a blog shows likes and url when the button is clicked', async () => {
   await user.click(button);
 
   expect(divBlog).not.toHaveStyle('display: none');
+
+  screen.debug();
+});
+
+test('like button clicked twice', async () => {
+  const button = screen.getByText('Show');
+  await user.click(button);
+  const buttonLike = screen.getByText('Like');
+
+  await user.click(buttonLike);
+  await user.click(buttonLike);
+
+  expect(blogService.updateLikes).toHaveBeenCalledTimes(2);
+
+  screen.debug();
 });

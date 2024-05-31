@@ -35,7 +35,13 @@ const postABlog = async (blogToPost) => {
 };
 
 const updateLikes = async (objectLikes, id) => {
-  const response = await axios.put(`${baseUrl}/${id}`, objectLikes);
+  try {
+    const response = await axios.put(`${baseUrl}/${id}`, objectLikes);
+
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 const deleteBlog = async (id) => {
