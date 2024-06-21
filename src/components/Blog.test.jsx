@@ -1,9 +1,7 @@
 import { screen, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Blog from './Blog';
-import { beforeEach } from 'vitest';
 import blogService from '../services/blogs.js';
-import { vi } from 'vitest';
 
 let blog;
 let container;

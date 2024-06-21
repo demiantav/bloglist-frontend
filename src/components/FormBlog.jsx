@@ -3,6 +3,7 @@ import Blog from './Blog';
 import service from '../services/blogs.js';
 import Notification from './Notification.jsx';
 import Togglable from './Togglable.jsx';
+import NewBlog from './NewBlog.jsx';
 
 const FormBlog = ({ blogs, setBlogs, message, setMessage, user }) => {
   const [author, setAuthor] = useState('');
@@ -35,44 +36,15 @@ const FormBlog = ({ blogs, setBlogs, message, setMessage, user }) => {
   return (
     <>
       <Togglable buttonLabel="New blog">
-        <form onSubmit={handleBlog}>
-          <h1>Add Blog</h1>
-          <div>
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              value={title}
-              name="title"
-              id="title"
-              onChange={({ target }) => setTitle(target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="author">Author</label>
-            <input
-              type="text"
-              value={author}
-              name="author"
-              id="author"
-              onChange={({ target }) => setAuthor(target.value)}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="url">Url</label>
-            <input
-              type="text"
-              value={url}
-              name="url"
-              id="url"
-              onChange={({ target }) => setUrl(target.value)}
-              required
-            />
-          </div>
-
-          <button type="submit">Save</button>
-        </form>
+        <NewBlog
+          handleBlog={handleBlog}
+          title={title}
+          author={author}
+          url={url}
+          setTitle={setTitle}
+          setAuthor={setAuthor}
+          setUrl={setUrl}
+        />
       </Togglable>
 
       <Notification message={message} setMessage={setMessage} />
