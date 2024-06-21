@@ -6,27 +6,12 @@ import Togglable from './Togglable.jsx';
 import NewBlog from './NewBlog.jsx';
 
 const FormBlog = ({ blogs, setBlogs, message, setMessage, user }) => {
-  const [author, setAuthor] = useState('');
-  const [title, setTitle] = useState('');
-  const [url, setUrl] = useState('');
-
-  const handleBlog = async (event) => {
-    event.preventDefault();
-
-    const blog = {
-      author,
-      title,
-      url,
-    };
-
+  const handleBlog = async (blog) => {
     try {
       const blogPosted = await service.postABlog(blog);
-      setAuthor('');
-      setTitle('');
-      setUrl('');
 
       setBlogs(blogs.concat(blogPosted));
-      setMessage(`a new blog You're NOT gonna need it! by ${author} added`);
+      setMessage(`a new blog You're NOT gonna need it! by ${blog.author} added`);
     } catch (error) {
       console.log(error);
       setMessage(error);
@@ -36,15 +21,7 @@ const FormBlog = ({ blogs, setBlogs, message, setMessage, user }) => {
   return (
     <>
       <Togglable buttonLabel="New blog">
-        <NewBlog
-          handleBlog={handleBlog}
-          title={title}
-          author={author}
-          url={url}
-          setTitle={setTitle}
-          setAuthor={setAuthor}
-          setUrl={setUrl}
-        />
+        <NewBlog handleBlog={handleBlog} />
       </Togglable>
 
       <Notification message={message} setMessage={setMessage} />
