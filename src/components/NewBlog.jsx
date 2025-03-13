@@ -15,7 +15,6 @@ const NewBlog = ({ handleBlog }) => {
     };
 
     handleBlog(blog);
-
     setAuthor('');
     setTitle('');
     setUrl('');

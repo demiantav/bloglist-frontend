@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const loginUrl = '/api/login';
 
+
 const login = async (credentials) => {
   try {
     const userLogged = await axios.post(loginUrl, credentials);

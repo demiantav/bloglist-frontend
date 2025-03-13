@@ -49,7 +49,7 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
 
   return (
     <>
-      <ul style={styleUl}>
+      <ul style={styleUl} className="blog">
         {blog.title}
         <button onClick={handleVisible}>{showBlog ? 'Hide' : 'Show'}</button>
 
@@ -62,6 +62,8 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
               Like
             </button>
           </p>
+          {console.log(user)}
+          {console.log(blog)}
           {user.user === blog.userId.userName && (
             <button onClick={() => deleteBlog(blog.id)}>Delete</button>
           )}

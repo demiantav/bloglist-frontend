@@ -9,6 +9,9 @@ const FormBlog = ({ blogs, setBlogs, message, setMessage, user }) => {
   const handleBlog = async (blog) => {
     try {
       const blogPosted = await service.postABlog(blog);
+      {
+        console.log(blogPosted);
+      }
 
       setBlogs(blogs.concat(blogPosted));
       setMessage(`a new blog You're NOT gonna need it! by ${blog.author} added`);
