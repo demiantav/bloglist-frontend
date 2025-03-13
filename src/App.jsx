@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react';
-import Blog from './components/Blog';
+import { useDispatch } from 'react-redux';
 import blogService from './services/blogs';
 import loginService from './services/login';
 import HeaderUser from './components/HeaderUser';
 import LoginForm from './components/LoginForm';
 import FormBlog from './components/FormBlog';
-import './components/style.css';
+import { setNotification } from './reducers/notificationReducer.js';
 
 const App = () => {
   const [blogs, setBlogs] = useState([]);
   const [user, setUser] = useState(null);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [message, setMessage] = useState(null);
+
+  const dispatch = useDispatch();
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -27,12 +28,12 @@ const App = () => {
       window.localStorage.setItem('userTokenLocal', JSON.stringify(user));
       blogService.getToken(user.token);
       setUser(user);
-      setMessage(null);
+      dispatch(setNotification(`${user.name} is online`));
       setUserName('');
       setPassword('');
     } catch (error) {
       console.log(error);
-      setMessage('wrong username or password');
+      dispatch(setNotification('wrong username or password'));
     }
   };
 
@@ -61,19 +62,11 @@ const App = () => {
             handleLogin={handleLogin}
             setUserName={setUserName}
             setPassword={setPassword}
-            setMessage={setMessage}
             userName={userName}
             password={password}
-            message={message}
           />
         ) : (
-          <FormBlog
-            blogs={blogs}
-            setBlogs={setBlogs}
-            message={message}
-            setMessage={setMessage}
-            user={user}
-          />
+          <FormBlog blogs={blogs} setBlogs={setBlogs} user={user} />
         )}
       </section>
     </>

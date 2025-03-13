@@ -1,0 +1,7 @@
+.success {
+  background-color: #4caf50;
+  color: white;
+  width: fit-content;
+  margin-block-start: 1rem;
+  padding: 1rem;
+}

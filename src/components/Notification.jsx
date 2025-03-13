@@ -1,28 +1,28 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import style from '../components/Notification.module.css';
 
-const Notification = ({ message, setMessage }) => {
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        setMessage(null);
-      }, 5000);
+const Notification = () => {
+  const messageState = useSelector((state) => state.notification);
 
-      // Limpiar el temporizador cuando el componente se desmonte o el mensaje cambie
-      return () => clearTimeout(timer);
-    }
-  }, [message, setMessage]);
+  // useEffect(() => {
+  //   if (message) {
+  //     const timer = setTimeout(() => {
+  //       setMessage(null);
+  //     }, 5000);
 
-  if (message === null) {
-    return null;
-  }
+  //     // Limpiar el temporizador cuando el componente se desmonte o el mensaje cambie
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [message, setMessage]);
 
-  const isError = message.includes('wrong');
+  // if (message === null) {
+  //   return null;
+  // }
 
-  return (
-    <p className="notification" style={{ backgroundColor: isError ? 'red' : 'green' }}>
-      {message}
-    </p>
-  );
+  // const isError = message.includes('wrong');
+
+  return <div className={style.success}>{messageState}</div>;
 };
 
 export default Notification;

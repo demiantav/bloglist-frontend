@@ -28,12 +28,6 @@ section {
   gap: 1rem;
 }
 
-p {
-  position: relative;
-  padding-inline-end: 15px;
-  color: white;
-}
-
 .logout p::after {
   content: '';
   position: absolute;
