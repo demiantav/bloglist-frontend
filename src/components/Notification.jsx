@@ -16,9 +16,9 @@ const Notification = () => {
   //   }
   // }, [message, setMessage]);
 
-  // if (message === null) {
-  //   return null;
-  // }
+  if (messageState === null) {
+    return null;
+  }
 
   // const isError = message.includes('wrong');
 
