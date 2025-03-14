@@ -6,8 +6,7 @@ const LoginForm = ({
   setPassword,
   userName,
   password,
-  message,
-  setMessage,
+  statusNotification,
 }) => {
   return (
     <>
@@ -39,7 +38,7 @@ const LoginForm = ({
 
         <button type="submit">Login</button>
       </form>
-      <Notification message={message} setMessage={setMessage} />
+      <Notification statusNotification={statusNotification} />
     </>
   );
 };

@@ -1,7 +1,14 @@
-.success {
-  background-color: #4caf50;
+.notification {
   color: white;
   width: fit-content;
   margin-block-start: 1rem;
   padding: 1rem;
+}
+
+.success {
+  background-color: #4caf50;
+}
+
+.error {
+  background-color: #f44336;
 }

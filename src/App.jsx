@@ -12,6 +12,7 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
+  const [statusNotification, setStatusNotification] = useState('');
 
   const dispatch = useDispatch();
 
@@ -31,9 +32,11 @@ const App = () => {
       dispatch(setNotification(`${user.name} is online`));
       setUserName('');
       setPassword('');
+      setStatusNotification('success');
     } catch (error) {
       console.log(error);
       dispatch(setNotification('wrong username or password'));
+      setStatusNotification('error');
     }
   };
 
@@ -64,6 +67,7 @@ const App = () => {
             setPassword={setPassword}
             userName={userName}
             password={password}
+            statusNotification={statusNotification}
           />
         ) : (
           <FormBlog blogs={blogs} setBlogs={setBlogs} user={user} />

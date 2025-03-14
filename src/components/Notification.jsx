@@ -2,19 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import style from '../components/Notification.module.css';
 
-const Notification = () => {
+const Notification = ({ statusNotification }) => {
   const messageState = useSelector((state) => state.notification);
-
-  // useEffect(() => {
-  //   if (message) {
-  //     const timer = setTimeout(() => {
-  //       setMessage(null);
-  //     }, 5000);
-
-  //     // Limpiar el temporizador cuando el componente se desmonte o el mensaje cambie
-  //     return () => clearTimeout(timer);
-  //   }
-  // }, [message, setMessage]);
 
   if (messageState === null) {
     return null;
@@ -22,7 +11,15 @@ const Notification = () => {
 
   // const isError = message.includes('wrong');
 
-  return <div className={style.success}>{messageState}</div>;
+  return (
+    <div
+      className={`${style.notification} ${
+        statusNotification === 'error' ? style.error : style.success
+      }`}
+    >
+      {messageState}
+    </div>
+  );
 };
 
 export default Notification;
