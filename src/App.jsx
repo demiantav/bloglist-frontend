@@ -12,7 +12,6 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [statusNotification, setStatusNotification] = useState('');
 
   const dispatch = useDispatch();
 
@@ -29,14 +28,12 @@ const App = () => {
       window.localStorage.setItem('userTokenLocal', JSON.stringify(user));
       blogService.getToken(user.token);
       setUser(user);
-      dispatch(setNotification(`${user.name} is online`));
+      dispatch(setNotification(`${user.name} is online`, 'success'));
       setUserName('');
       setPassword('');
-      setStatusNotification('success');
     } catch (error) {
       console.log(error);
-      dispatch(setNotification('wrong username or password'));
-      setStatusNotification('error');
+      dispatch(setNotification('wrong username or password', 'error'));
     }
   };
 
@@ -67,7 +64,6 @@ const App = () => {
             setPassword={setPassword}
             userName={userName}
             password={password}
-            statusNotification={statusNotification}
           />
         ) : (
           <FormBlog blogs={blogs} setBlogs={setBlogs} user={user} />

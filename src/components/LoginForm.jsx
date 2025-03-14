@@ -1,13 +1,6 @@
 import Notification from './Notification';
 
-const LoginForm = ({
-  handleLogin,
-  setUserName,
-  setPassword,
-  userName,
-  password,
-  statusNotification,
-}) => {
+const LoginForm = ({ handleLogin, setUserName, setPassword, userName, password }) => {
   return (
     <>
       <form onSubmit={handleLogin} className="login-form">
@@ -38,7 +31,7 @@ const LoginForm = ({
 
         <button type="submit">Login</button>
       </form>
-      <Notification statusNotification={statusNotification} />
+      <Notification />
     </>
   );
 };

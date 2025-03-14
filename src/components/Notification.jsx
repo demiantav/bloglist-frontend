@@ -2,22 +2,16 @@ import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import style from '../components/Notification.module.css';
 
-const Notification = ({ statusNotification }) => {
-  const messageState = useSelector((state) => state.notification);
+const Notification = () => {
+  const { message, status } = useSelector((state) => state.notification);
 
-  if (messageState === null) {
+  if (message === '') {
     return null;
   }
 
-  // const isError = message.includes('wrong');
-
   return (
-    <div
-      className={`${style.notification} ${
-        statusNotification === 'error' ? style.error : style.success
-      }`}
-    >
-      {messageState}
+    <div className={`${style.notification} ${status === 'error' ? style.error : style.success}`}>
+      {message}
     </div>
   );
 };

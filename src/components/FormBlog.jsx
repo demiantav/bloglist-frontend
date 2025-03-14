@@ -1,11 +1,14 @@
-import { useState } from 'react';
 import Blog from './Blog';
 import service from '../services/blogs.js';
 import Notification from './Notification.jsx';
 import Togglable from './Togglable.jsx';
 import NewBlog from './NewBlog.jsx';
+import { useDispatch } from 'react-redux';
+import { setNotification } from '../reducers/notificationReducer.js';
 
-const FormBlog = ({ blogs, setBlogs, message, setMessage, user }) => {
+const FormBlog = ({ blogs, setBlogs, user }) => {
+  const dispatch = useDispatch();
+
   const handleBlog = async (blog) => {
     try {
       const blogPosted = await service.postABlog(blog);
@@ -14,10 +17,12 @@ const FormBlog = ({ blogs, setBlogs, message, setMessage, user }) => {
       }
 
       setBlogs(blogs.concat(blogPosted));
-      setMessage(`a new blog You're NOT gonna need it! by ${blog.author} added`);
+      dispatch(
+        setNotification(`a new blog You're NOT gonna need it! by ${blog.author} added`, 'success')
+      );
     } catch (error) {
       console.log(error);
-      setMessage(error);
+      dispatch(setNotification(`${error}`, 'error'));
     }
   };
 
@@ -27,7 +32,7 @@ const FormBlog = ({ blogs, setBlogs, message, setMessage, user }) => {
         <NewBlog handleBlog={handleBlog} />
       </Togglable>
 
-      <Notification message={message} setMessage={setMessage} />
+      <Notification />
 
       {blogs
         .filter((blog) => blog.userId)
