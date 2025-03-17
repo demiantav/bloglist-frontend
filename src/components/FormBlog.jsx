@@ -3,11 +3,12 @@ import service from '../services/blogs.js';
 import Notification from './Notification.jsx';
 import Togglable from './Togglable.jsx';
 import NewBlog from './NewBlog.jsx';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../reducers/notificationReducer.js';
 
-const FormBlog = ({ blogs, setBlogs, user }) => {
+const FormBlog = ({ user }) => {
   const dispatch = useDispatch();
+  const blogs = useSelector((state) => state.blogs);
 
   const handleBlog = async (blog) => {
     try {
@@ -37,13 +38,7 @@ const FormBlog = ({ blogs, setBlogs, user }) => {
       {blogs
         .filter((blog) => blog.userId)
         .map((filteredBlog) => (
-          <Blog
-            key={filteredBlog.id}
-            blog={filteredBlog}
-            user={user}
-            blogs={blogs}
-            setBlogs={setBlogs}
-          />
+          <Blog key={filteredBlog.id} blog={filteredBlog} user={user} />
         ))}
     </>
   );

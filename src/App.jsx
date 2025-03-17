@@ -8,7 +8,7 @@ import FormBlog from './components/FormBlog';
 import { setNotification } from './reducers/notificationReducer.js';
 
 const App = () => {
-  const [blogs, setBlogs] = useState([]);
+  // const [blogs, setBlogs] = useState([]);
   const [user, setUser] = useState(null);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
@@ -37,12 +37,12 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    blogService.getAll().then((blogs) => {
-      blogs.sort((a, b) => b.likes - a.likes);
-      setBlogs(blogs);
-    });
-  }, []);
+  // useEffect(() => {
+  //   blogService.getAll().then((blogs) => {
+  //     blogs.sort((a, b) => b.likes - a.likes);
+  //     setBlogs(blogs);
+  //   });
+  // }, []);
 
   useEffect(() => {
     const loggedUserJSON = window.localStorage.getItem('userTokenLocal');
@@ -66,7 +66,7 @@ const App = () => {
             password={password}
           />
         ) : (
-          <FormBlog blogs={blogs} setBlogs={setBlogs} user={user} />
+          <FormBlog user={user} />
         )}
       </section>
     </>
