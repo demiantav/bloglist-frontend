@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Blog from './Blog';
 import service from '../services/blogs.js';
 import Notification from './Notification.jsx';
@@ -5,6 +6,7 @@ import Togglable from './Togglable.jsx';
 import NewBlog from './NewBlog.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../reducers/notificationReducer.js';
+import { getBlogs } from '../reducers/blogsReducer.js';
 
 const FormBlog = ({ user }) => {
   const dispatch = useDispatch();
@@ -26,6 +28,10 @@ const FormBlog = ({ user }) => {
       dispatch(setNotification(`${error}`, 'error'));
     }
   };
+
+  useEffect(() => {
+    dispatch(getBlogs());
+  }, []);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import getAll from '../services/blogs.js';
+import service from '../services/blogs.js';
 import { createSlice } from '@reduxjs/toolkit';
 
 const blogSlice = createSlice({
@@ -13,7 +13,7 @@ const blogSlice = createSlice({
 
 export const getBlogs = () => {
   return async (dispatch) => {
-    const blogs = await getAll();
+    const blogs = await service.getAll();
     dispatch(setBlogs(blogs));
   };
 };
