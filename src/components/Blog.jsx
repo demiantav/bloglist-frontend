@@ -62,8 +62,7 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
               Like
             </button>
           </p>
-          {console.log(user)}
-          {console.log(blog)}
+
           {user.user === blog.userId.userName && (
             <button onClick={() => deleteBlog(blog.id)}>Delete</button>
           )}
