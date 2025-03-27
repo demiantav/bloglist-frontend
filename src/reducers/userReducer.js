@@ -9,6 +9,10 @@ const userSlice = createSlice({
     setUser(state, action) {
       return action.payload;
     },
+
+    resetUser() {
+      return null;
+    },
   },
 });
 
@@ -26,5 +30,5 @@ export const loginUser = (credentials) => {
   };
 };
 
-export const { setUser } = userSlice.actions;
+export const { setUser, resetUser } = userSlice.actions;
 export default userSlice.reducer;

@@ -1,9 +1,13 @@
 import '../components/style.css';
+import { resetUser } from '../reducers/userReducer';
+import { useDispatch } from 'react-redux';
 
-const HeaderUser = ({ user, setUser }) => {
+const HeaderUser = ({ user }) => {
+  const dispatch = useDispatch();
+
   const logOut = () => {
     window.localStorage.clear();
-    setUser(null);
+    dispatch(resetUser());
   };
 
   return (

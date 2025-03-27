@@ -2,6 +2,7 @@ import Notification from './Notification';
 import useInput from '../hooks/useInput';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../reducers/userReducer';
+import { setNotification } from '../reducers/notificationReducer';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const LoginForm = () => {
     };
 
     dispatch(loginUser(credentials));
+    dispatch(setNotification('Login successful', 'success'));
   };
 
   return (
