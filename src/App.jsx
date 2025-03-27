@@ -12,16 +12,16 @@ const App = () => {
 
   let user = useSelector((state) => state.user);
 
-  useEffect(() => {
-    const loggedUserJSON = window.localStorage.getItem('userTokenLocal');
+  // useEffect(() => {
+  //   const loggedUserJSON = window.localStorage.getItem('userTokenLocal');
 
-    if (loggedUserJSON) {
-      const userToLog = JSON.parse(loggedUserJSON);
+  //   if (loggedUserJSON) {
+  //     const userToLog = JSON.parse(loggedUserJSON);
 
-      console.log(userToLog);
-      console.log(user);
-    }
-  }, []);
+  //     console.log(userToLog);
+  //     console.log(user);
+  //   }
+  // }, []);
 
   return (
     <>
