@@ -1,13 +1,20 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteABlog } from '../reducers/blogsReducer.js';
 import blogService from '../services/blogs.js';
 
-const Blog = ({ blog, user, blogs, setBlogs }) => {
+const Blog = ({ blog, user }) => {
   const [showBlog, setShowBlog] = useState(false);
   const [likes, setLikes] = useState(blog.likes);
 
   const isVisible = { display: showBlog ? '' : 'none' };
 
+  // console.log(blog);
+  // console.log(user);
+
   let updatedBlog;
+
+  const dispatch = useDispatch();
 
   const handleVisible = () => {
     setShowBlog(!showBlog);
@@ -34,11 +41,9 @@ const Blog = ({ blog, user, blogs, setBlogs }) => {
 
   const deleteBlog = async (id) => {
     const confirm = window.confirm(`Remove ${blog.title} by ${blog.author} ?`);
-    const blogId = id;
 
     if (confirm) {
-      await blogService.deleteBlog(blog.id);
-      setBlogs(blogs.filter((blog) => blog.id !== blogId));
+      dispatch(deleteABlog(id));
     }
   };
 

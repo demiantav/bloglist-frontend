@@ -12,6 +12,10 @@ const blogSlice = createSlice({
     addBlog(state, action) {
       state.push(action.payload);
     },
+
+    deleteBlog(state, action) {
+      return state.filter((blog) => blog.id !== action.payload);
+    },
   },
 });
 
@@ -33,5 +37,16 @@ export const postBlog = (blog) => {
   };
 };
 
-export const { setBlogs, addBlog } = blogSlice.actions;
+export const deleteABlog = (id) => {
+  return async (dispatch) => {
+    try {
+      await service.deleteBlog(id);
+      dispatch(deleteBlog(id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+};
+
+export const { setBlogs, addBlog, deleteBlog } = blogSlice.actions;
 export default blogSlice.reducer;
