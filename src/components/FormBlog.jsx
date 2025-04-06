@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import Blog from './Blog';
 import Notification from './Notification.jsx';
 import Togglable from './Togglable.jsx';
+import Users from './Users.jsx';
 import NewBlog from './NewBlog.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../reducers/notificationReducer.js';
@@ -35,11 +36,13 @@ const FormBlog = ({ user }) => {
 
       <Notification />
 
-      {blogs
+      {/* {blogs
         .filter((blog) => blog.userId)
         .map((filteredBlog) => (
           <Blog key={filteredBlog.id} blog={filteredBlog} user={user} />
-        ))}
+        ))} */}
+
+      <Users />
     </>
   );
 };
