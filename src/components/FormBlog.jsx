@@ -3,6 +3,7 @@ import Blog from './Blog';
 import Notification from './Notification.jsx';
 import Togglable from './Togglable.jsx';
 import NewBlog from './NewBlog.jsx';
+import Users from '../pages/Users.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../reducers/notificationReducer.js';
 import { getBlogs, postBlog } from '../reducers/blogsReducer.js';
