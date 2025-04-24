@@ -1,15 +1,13 @@
 import axios from 'axios';
 
-const URI = '/api/users';
+const URL = '/api/users';
 
-const getUsers = async () => {
+export const getAllUsers = async () => {
   try {
-    const users = await axios.get(URI);
-
+    const users = await axios.get(URL);
     return users.data;
   } catch (error) {
     console.log(error);
+    return error;
   }
 };
-
-export default { getUsers };
