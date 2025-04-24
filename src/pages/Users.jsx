@@ -4,7 +4,7 @@ import usersService from '../services/users.js';
 const Users = () => {
   const { isLoading, error, data } = useQuery({
     queryKey: ['users'],
-    queryFn: usersService.getUsers,
+    queryFn: usersService.getAllUsers,
     refetchOnWindowFocus: false,
   });
 

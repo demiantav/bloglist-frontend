@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL = '/api/users';
 
-export const getAllUsers = async () => {
+const getAllUsers = async () => {
   try {
     const users = await axios.get(URL);
     return users.data;
@@ -11,3 +11,5 @@ export const getAllUsers = async () => {
     return error;
   }
 };
+
+export default { getAllUsers };

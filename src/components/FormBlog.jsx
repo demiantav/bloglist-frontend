@@ -2,14 +2,14 @@ import { useEffect } from 'react';
 import Blog from './Blog';
 import Notification from './Notification.jsx';
 import Togglable from './Togglable.jsx';
-import Users from './Users.jsx';
 import NewBlog from './NewBlog.jsx';
 import Users from '../pages/Users.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../reducers/notificationReducer.js';
 import { getBlogs, postBlog } from '../reducers/blogsReducer.js';
+import { Routes, Route } from 'react-router';
 
-const FormBlog = ({ user }) => {
+const FormBlog = () => {
   const dispatch = useDispatch();
   const blogs = useSelector((state) => state.blogs);
 
@@ -42,8 +42,9 @@ const FormBlog = ({ user }) => {
         .map((filteredBlog) => (
           <Blog key={filteredBlog.id} blog={filteredBlog} user={user} />
         ))} */}
-
-      <Users />
+      <Routes>
+        <Route path="/users" element={<Users />}></Route>
+      </Routes>
     </>
   );
 };

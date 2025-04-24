@@ -27,9 +27,12 @@ const HeaderUser = ({ user }) => {
       ) : (
         <header className="header-style">
           <div className="container">
+            <div>
+              <img src="" alt="" />
+            </div>
             <div className="logout">
-              <p>{user.name}</p>
               <button onClick={logOut}>Logout</button>
+              <p>{user.name}</p>
             </div>
           </div>
         </header>
