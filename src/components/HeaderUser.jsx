@@ -3,7 +3,7 @@ import { resetUser } from '../reducers/userReducer';
 import { useDispatch } from 'react-redux';
 import Users from '../pages/Users';
 
-import { Link, Route, Router, Routes } from 'react-router';
+import { NavLink, Route, Router, Routes } from 'react-router';
 
 const HeaderUser = ({ user }) => {
   const dispatch = useDispatch();
@@ -27,9 +27,14 @@ const HeaderUser = ({ user }) => {
       ) : (
         <header className="header-style">
           <div className="container">
-            <div>
-              <img src="" alt="" />
-            </div>
+            <nav>
+              <NavLink style={{ color: 'white' }} to={'/'}>
+                blogs
+              </NavLink>
+              <NavLink style={{ color: 'white' }} to={'/users'}>
+                users
+              </NavLink>
+            </nav>
             <div className="logout">
               <button onClick={logOut}>Logout</button>
               <p>{user.name}</p>

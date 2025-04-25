@@ -36,7 +36,7 @@ const FormBlog = () => {
 
       <Routes>
         <Route path="/" element={<AllBlogs />}></Route>
-        {/* <Route path="/" element={<Users />}></Route> */}
+        <Route path="/users" element={<Users />}></Route>
         <Route path="/users/:id" element={<User />}></Route>
         <Route path="blogs/:id" element={<UserBlogs />}></Route>
       </Routes>

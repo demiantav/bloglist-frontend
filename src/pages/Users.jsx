@@ -21,7 +21,7 @@ const Users = () => {
       <section>
         {data.map((user) => (
           <div key={user.id}>
-            <Link to={`users/${user.id}`}>{user.userName}</Link>
+            <Link to={`/users/${user.id}`}>{user.userName}</Link>
             <p style={{ display: 'inline' }}>{user.blogs.length}</p>
           </div>
         ))}
