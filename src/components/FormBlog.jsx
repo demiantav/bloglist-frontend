@@ -1,17 +1,18 @@
-import { useEffect } from 'react';
-import Blog from './Blog';
 import Notification from './Notification.jsx';
 import Togglable from './Togglable.jsx';
 import NewBlog from './NewBlog.jsx';
 import Users from '../pages/Users.jsx';
+import User from '../pages/User.jsx';
+import UserBlogs from '../pages/UserBlogs.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { setNotification } from '../reducers/notificationReducer.js';
-import { getBlogs, postBlog } from '../reducers/blogsReducer.js';
+import { postBlog } from '../reducers/blogsReducer.js';
 import { Routes, Route } from 'react-router';
+import AllBlogs from '../pages/AllBlogs.jsx';
 
 const FormBlog = () => {
   const dispatch = useDispatch();
-  const blogs = useSelector((state) => state.blogs);
+  const { blogs, user } = useSelector((state) => state);
 
   const handleBlog = (blog) => {
     try {
@@ -25,10 +26,6 @@ const FormBlog = () => {
     }
   };
 
-  useEffect(() => {
-    dispatch(getBlogs());
-  }, []);
-
   return (
     <>
       <Togglable buttonLabel="New blog">
@@ -37,13 +34,11 @@ const FormBlog = () => {
 
       <Notification />
 
-      {/* {blogs
-        .filter((blog) => blog.userId)
-        .map((filteredBlog) => (
-          <Blog key={filteredBlog.id} blog={filteredBlog} user={user} />
-        ))} */}
       <Routes>
-        <Route path="/users" element={<Users />}></Route>
+        <Route path="/" element={<AllBlogs />}></Route>
+        {/* <Route path="/" element={<Users />}></Route> */}
+        <Route path="/users/:id" element={<User />}></Route>
+        <Route path="blogs/:id" element={<UserBlogs />}></Route>
       </Routes>
     </>
   );
