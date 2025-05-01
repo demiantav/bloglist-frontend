@@ -18,7 +18,6 @@ const LoginForm = () => {
     };
 
     dispatch(loginUser(credentials));
-    dispatch(setNotification('Login successful', 'success'));
   };
 
   return (

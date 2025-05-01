@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import loginService from '../services/login.js';
 import blogService from '../services/blogs.js';
+import { setNotification } from './notificationReducer.js';
 
 const userSlice = createSlice({
   name: 'user',
@@ -24,8 +25,9 @@ export const loginUser = (credentials) => {
       blogService.getToken(user.token);
 
       dispatch(setUser(user));
+      dispatch(setNotification(`User ${user.name} logged in successfully`, 'success'));
     } catch (error) {
-      console.log(error);
+      dispatch(setNotification(`Error: ${error.response.data.error}`, 'error'));
     }
   };
 };
