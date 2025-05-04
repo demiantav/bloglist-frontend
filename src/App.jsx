@@ -26,7 +26,7 @@ const App = () => {
   return (
     <>
       <HeaderUser user={user} />
-      <section>{user === null ? <LoginForm /> : <FormBlog />}</section>
+      <main>{user === null ? <LoginForm /> : <FormBlog />}</main>
     </>
   );
 };

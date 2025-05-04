@@ -44,6 +44,15 @@ const UserBlogs = () => {
         </p>
         <p>added by {blog.userId.userName}</p>
       </div>
+
+      <section className="comments">
+        <h2>Comments</h2>
+        <ul>
+          {blog.comments.map((comment, index) => (
+            <li key={index}>{comment}</li>
+          ))}
+        </ul>
+      </section>
     </>
   );
 };
