@@ -1,15 +1,19 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import { useState } from 'react';
 import blogService from '../services/blogs.js';
+import useInput from '../hooks/useInput';
+import { getBlogs } from '../reducers/blogsReducer';
 
 const UserBlogs = () => {
   const { blogs } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const blogId = useParams().id;
 
   const blog = blogs.find((blog) => blog.id === blogId);
   const [like, setLikes] = useState(blog.likes);
+  const comment = useInput();
 
   console.log(blog);
   console.log(blogs);
@@ -33,6 +37,17 @@ const UserBlogs = () => {
     }
   };
 
+  const setComment = async (e) => {
+    e.preventDefault();
+    try {
+      await blogService.addComment(blog.id, comment.value);
+      dispatch(getBlogs());
+      comment.reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <>
       <h1>{blog.title}</h1>
@@ -47,6 +62,11 @@ const UserBlogs = () => {
 
       <section className="comments">
         <h2>Comments</h2>
+
+        <form onSubmit={setComment}>
+          <input type="text" {...comment} />
+          <button type="submit">add comment</button>
+        </form>
         <ul>
           {blog.comments.map((comment, index) => (
             <li key={index}>{comment}</li>

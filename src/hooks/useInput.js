@@ -8,9 +8,14 @@ const useInput = () => {
     console.log(e.target.value);
   };
 
+  const reset = () => {
+    setValue('');
+  };
+
   return {
     value,
     onChange,
+    reset,
   };
 };
 
