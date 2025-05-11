@@ -12,8 +12,19 @@
   top: 0;
 }
 
+.test {
+  background-color: red;
+}
+
 section {
   margin-inline: 1rem;
+}
+
+main {
+  background-color: rgb(148, 7, 127);
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
 }
 
 .container {

@@ -3,6 +3,8 @@ import useInput from '../hooks/useInput';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../reducers/userReducer';
 import { setNotification } from '../reducers/notificationReducer';
+import { Box, TextField, Button } from '@mui/material';
+import style from '../components/LoginForm.module.css';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
@@ -22,17 +24,26 @@ const LoginForm = () => {
 
   return (
     <>
-      <form onSubmit={handleLogin} className="login-form">
+      <form onSubmit={handleLogin} className={style.layout}>
         <h1>Login</h1>
-        <div>
+        {/* <div>
           <label htmlFor="username">username</label>
           <input type="text" name="Username" id="username" required {...userName} />
-        </div>
+        </div> */}
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input type="password" name="Password" id="password" required {...password} />
-        </div>
+        <Box>
+          <TextField
+            id="standard-basic"
+            variant="standard"
+            label="username"
+            required
+            {...userName}
+          />
+        </Box>
+
+        <Box>
+          <TextField variant="standard" label="password" required {...password} />
+        </Box>
 
         <button type="submit">Login</button>
       </form>
