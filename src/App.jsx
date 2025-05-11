@@ -26,7 +26,7 @@ const App = () => {
   return (
     <>
       <HeaderUser user={user} />
-      <main>{user === null ? <LoginForm /> : <FormBlog />}</main>
+      {user === null ? <LoginForm /> : <FormBlog />}
     </>
   );
 };
