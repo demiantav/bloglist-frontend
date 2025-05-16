@@ -1,4 +1,23 @@
 .grid_layout {
   display: grid;
-  grid-template-columns: 50% 50%;
+  place-items: center;
+  padding: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 5rem;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  p {
+    font-family: 'Book22';
+    font-size: clamp(1rem, 0.7391rem + 1.3043vw, 1.75rem);
+    font-weight: bolder;
+    line-height: 1.29;
+    letter-spacing: -0.1em;
+  }
+}
+
+.blog_img {
 }

@@ -18,6 +18,7 @@ const AllBlogs = () => {
 
   return (
     <>
+      <h1>Bloglist</h1>
       <section className={style.grid_layout}>
         {blogs
           .filter((blog) => blog.userId)
@@ -25,7 +26,11 @@ const AllBlogs = () => {
             // <Blog key={filteredBlog.id} blog={filteredBlog} user={user} />
 
             <Link to={`/blogs/${filteredBlog.id}`} key={filteredBlog.id}>
-              <img src="https://picsum.photos/200/200" alt="A random image for test" />
+              <img
+                src="https://picsum.photos/id/237/350/300"
+                alt="A random image for test"
+                className={style.blog_img}
+              />
               <p>{filteredBlog.title}</p>
             </Link>
           ))}
