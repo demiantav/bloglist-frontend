@@ -3,6 +3,7 @@ import Blog from '../components/Blog';
 import { useEffect } from 'react';
 import { getBlogs } from '../reducers/blogsReducer';
 import { Link } from 'react-router';
+import style from '../pages/AllBlogs.module.css';
 
 const AllBlogs = () => {
   const { user, blogs } = useSelector((state) => state);
@@ -17,14 +18,18 @@ const AllBlogs = () => {
 
   return (
     <>
-      {blogs
-        .filter((blog) => blog.userId)
-        .map((filteredBlog) => (
-          // <Blog key={filteredBlog.id} blog={filteredBlog} user={user} />
-          <Link to={`/blogs/${filteredBlog.id}`} key={filteredBlog.id}>
-            <p>{filteredBlog.title}</p>
-          </Link>
-        ))}
+      <section className={style.grid_layout}>
+        {blogs
+          .filter((blog) => blog.userId)
+          .map((filteredBlog) => (
+            // <Blog key={filteredBlog.id} blog={filteredBlog} user={user} />
+
+            <Link to={`/blogs/${filteredBlog.id}`} key={filteredBlog.id}>
+              <img src="https://picsum.photos/200/200" alt="A random image for test" />
+              <p>{filteredBlog.title}</p>
+            </Link>
+          ))}
+      </section>
     </>
   );
 };

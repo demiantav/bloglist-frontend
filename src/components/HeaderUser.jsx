@@ -25,15 +25,11 @@ const HeaderUser = ({ user }) => {
           </div>
         </header>
       ) : (
-        <header className="header-style">
+        <header className="header-style header-user">
           <div className="container">
             <nav>
-              <NavLink style={{ color: 'white' }} to={'/'}>
-                blogs
-              </NavLink>
-              <NavLink style={{ color: 'white' }} to={'/users'}>
-                users
-              </NavLink>
+              <NavLink to={'/'}>blogs</NavLink>
+              <NavLink to={'/users'}>users</NavLink>
             </nav>
             <div className="logout">
               <button onClick={logOut}>Logout</button>

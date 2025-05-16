@@ -13,6 +13,10 @@
   top: 0;
 }
 
+.header-user {
+  background-color: blanchedalmond;
+}
+
 .test {
   background-color: red;
 }
