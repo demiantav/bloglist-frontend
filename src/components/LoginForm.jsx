@@ -68,8 +68,8 @@ const LoginForm = () => {
           <Button variant="contained" color="primary" type="submit">
             Sign in
           </Button>
+          <Notification />
         </form>
-        <Notification />
       </main>
     </>
   );

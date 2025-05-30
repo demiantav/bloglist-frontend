@@ -10,9 +10,8 @@ import { postBlog } from '../reducers/blogsReducer.js';
 import { Routes, Route } from 'react-router';
 import AllBlogs from '../pages/AllBlogs.jsx';
 
-const FormBlog = () => {
+const Layout = () => {
   const dispatch = useDispatch();
-  const { blogs, user } = useSelector((state) => state);
 
   const handleBlog = (blog) => {
     try {
@@ -28,9 +27,9 @@ const FormBlog = () => {
 
   return (
     <>
-      <Togglable buttonLabel="New blog">
+      {/* <Togglable buttonLabel="New blog">
         <NewBlog handleBlog={handleBlog} />
-      </Togglable>
+      </Togglable> */}
 
       <Notification />
 
@@ -38,10 +37,11 @@ const FormBlog = () => {
         <Route path="/" element={<AllBlogs />}></Route>
         <Route path="/users" element={<Users />}></Route>
         <Route path="/users/:id" element={<User />}></Route>
-        <Route path="blogs/:id" element={<UserBlogs />}></Route>
+        <Route path="/blogs/:id" element={<UserBlogs />}></Route>
+        <Route path="/blogForm" element={<NewBlog handleBlog={handleBlog} />}></Route>
       </Routes>
     </>
   );
 };
 
-export default FormBlog;
+export default Layout;

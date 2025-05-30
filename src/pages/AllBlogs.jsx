@@ -31,7 +31,10 @@ const AllBlogs = () => {
                 alt="A random image for test"
                 className={style.blog_img}
               />
-              <p>{filteredBlog.title}</p>
+              <p className={style.blog_title}>{filteredBlog.title}</p>
+              <p>
+                By <span>{filteredBlog.author}</span>
+              </p>
             </Link>
           ))}
       </section>
