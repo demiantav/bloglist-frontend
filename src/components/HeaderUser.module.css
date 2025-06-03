@@ -15,18 +15,22 @@
 .header__logout {
   display: flex;
   justify-content: space-evenly;
-  background-color: red;
   width: 15rem;
   position: relative;
-}
 
-.header__logout p {
-  background-color: blue;
+  button {
+    padding: 0.2rem;
+    background-color: red;
+    color: white;
+    border-radius: 0.3rem;
+  }
 }
 
 .header__logout p::after {
   content: '';
   position: absolute;
+  bottom: 15%;
+  transform: translateX(50%);
   width: 10px;
   height: 10px;
   border-radius: 100%;
