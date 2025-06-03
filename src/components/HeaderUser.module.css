@@ -1,0 +1,44 @@
+.header {
+  width: 100%;
+  padding: 0.6rem;
+  position: sticky;
+  top: 0;
+  background-color: blanchedalmond;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.header__logout {
+  display: flex;
+  justify-content: space-evenly;
+  background-color: red;
+  width: 15rem;
+  position: relative;
+}
+
+.header__logout p {
+  background-color: blue;
+}
+
+.header__logout p::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background-color: rgb(12, 230, 12);
+}
+
+.header__logout button:hover {
+  cursor: pointer;
+}
+
+.header__nav {
+  width: 15rem;
+  display: flex;
+  justify-content: space-evenly;
+}

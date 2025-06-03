@@ -1,7 +1,6 @@
-import '../components/style.css';
 import { resetUser } from '../reducers/userReducer';
 import { useDispatch } from 'react-redux';
-import Users from '../pages/Users';
+import style from '../components/HeaderUser.module.css';
 
 import { NavLink, Route, Router, Routes } from 'react-router';
 
@@ -16,23 +15,18 @@ const HeaderUser = ({ user }) => {
   return (
     <>
       {user === null ? (
-        <header className="header-style">
-          <div className="container">
-            <div>
-              <img src="" alt="" />
-            </div>
-            <div className="logout"></div>
-          </div>
+        <header className={style.header}>
+          <div className="container"></div>
         </header>
       ) : (
-        <header className="header-style">
-          <div className="container">
-            <nav>
+        <header className={style.header}>
+          <div className={style.header__container}>
+            <nav className={style.header__nav}>
               <NavLink to={'/'}>blogs</NavLink>
               <NavLink to={'/users'}>users</NavLink>
               <NavLink to={'/blogForm'}>add blog</NavLink>
             </nav>
-            <div className="logout">
+            <div className={style.header__logout}>
               <button onClick={logOut}>Logout</button>
               <p>{user.name}</p>
             </div>

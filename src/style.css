@@ -15,14 +15,6 @@ h1 {
     Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.header-style {
-  width: 100%;
-  padding: 0.6rem;
-  position: sticky;
-  top: 0;
-  background-color: blanchedalmond;
-}
-
 .test {
   background-color: red;
 }
@@ -34,36 +26,13 @@ main {
   place-items: center;
 }
 
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.logout {
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
-.logout p::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 10px;
-  border-radius: 100%;
-  background-color: rgb(12, 230, 12);
-}
-
-.logout button:hover {
-  cursor: pointer;
-}
-
 .notification {
   padding: 0.5rem;
   margin-block: 1rem;
   display: inline-block;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }

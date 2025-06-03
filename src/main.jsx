@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import store from './reducers/store.js';
 import { BrowserRouter } from 'react-router';
+import '../src/style.css';
 
 store.subscribe(() => console.log(store.getState()));
 
