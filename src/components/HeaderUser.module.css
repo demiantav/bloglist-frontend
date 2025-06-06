@@ -29,7 +29,7 @@
 .header__logout p::after {
   content: '';
   position: absolute;
-  bottom: 15%;
+  bottom: 9px;
   transform: translateX(50%);
   width: 10px;
   height: 10px;
